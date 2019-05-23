@@ -28,49 +28,92 @@ if ($DBConnect === FALSE){
   $DBName = "stringing";
   //returns if there is not database
   if (!mysqli_select_db($DBConnect, $DBName)){
-    echo "<p>There are orders enterd</p>";
+    echo "<p>There are no orders enterd</p>";
     //connects to the table "visitors" and selects all information from it
   } else {
+
         $TableName = "orders";
         $SQLstring = "SELECT * FROM $TableName";
-        $QueryResult = mysqil_query($DBConnect, $SQLstring);
-        //checks for entries in table
-        if (mysqli_num_rows($QueryResult) == 0){
-          echo "<p>There are no orders entered</p>";
-          //returns entries in table
-        }else {
-          $searchtype=$_POST['searchtype'];
-          $searchterm=stripcslashes($_POST['searchterm']);
+        $QueryResult = mysqli_query($SQLstring);
+        $searchterm=stripcslashes($_POST['searchterm']);
 
-          if (!$searchtype || !$searchterm) {
-          echo 'You have not entered search details.'
+          if (!$searchterm) {
+          echo 'You have not entered search details.';
+        }else{
 
-          $query = "select * from orders where ".$searchtype." like '%".$searchterm."%'";
-          $result = $QueryResult->query($QueryResult);
+          //$sql="SELECT  ID, FirstName, LastName FROM Contacts WHERE FirstName LIKE '%" . $name .  "%' OR LastName LIKE '%" . $name ."%'";
+          $query = "select * from orders where name like '%" . $searchterm . "%' OR orderid LIKE '%" . $searchterm . "%'";
+          $result =mysqli_query($query);
           $num_results = $result-> num_rows;
           echo "<p>Number of orders found: " . $num_results . "</p>";
-          for ($i=0; $i <$num_results; $i++) {
-          $row = $result->fetch_assoc();
+          while ($row = mysqli_fetch_array($results)) {
 
           //Change these to call all parts of the order from the orders table in the stringing database
-          echo "<p><strong>".($i+1).". Title: ";
-          echo htmlspecialchars(stripslashes($row['title']));
-          echo "</strong><br />Author: ";
-          echo stripslashes($row['author']);
-          echo "<br />ISBN: ";
-          echo stripslashes($row['isbn']);
-          echo "<br />Price: ";
-          echo stripslashes($row['price']);
+          echo "</strong><br />Name: ";
+          echo stripslashes($row['name']);
+          echo "<br />Age: ";
+          echo stripslashes($row['age']);
+          echo "<br />Years Playing: ";
+          echo stripslashes($row['pyears']);
+          echo "<br />Position: ";
+          echo stripslashes($row['position']);
+          echo "<br />Head: ";
+          echo stripslashes($row['head']);
+          echo "<br />Mesh: ";
+          echo stripslashes($row['mesh']);
+          echo "<br />Sidewall: ";
+          echo stripslashes($row['sidewall']);
+          echo "<br />Shooters: ";
+          echo stripslashes($row['shooters']);
+          echo "<br />Shooter Style: ";
+          echo stripslashes($row['shooterstyle']);
+          echo "<br />Pocket Location: ";
+          echo stripslashes($row['$pklocation']);
+          echo "<br />Whip: ";
+          echo stripslashes($row['whip']);
+          echo "<br />Additonal Comments: ";
+          echo stripslashes($row['addlcomms']);
           echo "</p>";
           }
         }
         //closes the query results
-        mysqli_free_result($QueryResult);
+        mysqli_free_result($query);
   }
   //closes connection to database
   mysqli_close($DBConnect);
 }
-
+/*
+<?php
+if(isset($_POST['submit'])){
+if(isset($_GET['go'])){
+if(preg_match("/^[  a-zA-Z]+/", $_POST['name'])){
+$name=$_POST['name'];
+//connect  to the database
+$db=mysql_connect  ("servername", "username",  "password") or die ('I cannot connect to the database  because: ' . mysql_error());
+//-select  the database to use
+$mydb=mysql_select_db("yourDatabase");
+  //-query  the database table
+  $sql="SELECT  ID, FirstName, LastName FROM Contacts WHERE FirstName LIKE '%" . $name .  "%' OR LastName LIKE '%" . $name ."%'";
+  //-run  the query against the mysql query function
+  $result=mysql_query($sql);
+  //-create  while loop and loop through result set
+  while($row=mysql_fetch_array($result)){
+          $FirstName  =$row['FirstName'];
+          $LastName=$row['LastName'];
+          $ID=$row['ID'];
+  //-display the result of the array
+  echo "<ul>\n";
+  echo "<li>" . "<a  href=\"search.php?id=$ID\">"   .$FirstName . " " . $LastName .  "</a></li>\n";
+  echo "</ul>";
+  }
+  }
+  else{
+  echo  "<p>Please enter a search query</p>";
+  }
+  }
+  }
+?>
+*/
  ?>
 </body>
 <footer class="footer">

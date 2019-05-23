@@ -1,69 +1,78 @@
-html{
+html {
   background-color: #000000;
 }
 
 .header {
-    overflow: hidden;
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+  overflow: hidden;
+  top: 0;
+  /* Position the navbar at the top of the page */
+  width: 100%;
+  /* Full width */
 }
 
 .navigation {
-    list-style: none;
-    margin: 0;
-    background: white;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: flex-end;
-  }
-  .navigation li:first-child{
-    margin-right: auto;
-    padding: 5px;
-  }
-  .navigation li:last-child{
-    padding-right: 10px;
-  }
+  list-style: none;
+  margin: 0;
+  background: white;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+}
 
-  .navigation a {
-    text-decoration: none;
-    display: block;
-    padding: 1em;
-    color:#CC0000;
-    padding-bottom: 5px;
-  }
-  .navigation p {
-    text-decoration: none;
-    display: block;
-    color: #CC0000;
-    padding-right: 1em;
-  }
-  .navigation a:hover {
-    background: grey;
-  }
+.navigation li:first-child {
+  margin-right: auto;
+  padding: 5px;
+}
+
+.navigation li:last-child {
+  padding-right: 10px;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: #CC0000;
+  padding-bottom: 5px;
+}
+
+.navigation p {
+  text-decoration: none;
+  display: block;
+  color: #CC0000;
+  padding-right: 1em;
+}
+
+.navigation a:hover {
+  background: grey;
+}
 
 .form-style-1 {
   background-color: #fff;
-	margin:10px auto;
-	max-width: 400px;
-	padding: 1px 12px 10px 20px;
-	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin: 10px auto;
+  max-width: 400px;
+  padding: 1px 12px 10px 20px;
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
 .form-style-1 li {
-	padding: 0;
-	display: block;
-	list-style: none;
-	margin: 10px 0 0 0;
+  padding: 0;
+  display: block;
+  list-style: none;
+  margin: 10px 0 0 0;
 }
-.form-style-1 label{
-	margin:0 0 3px 0;
-	padding:0px;
-	display:block;
-	font-weight: bold;
+
+.form-style-1 label {
+  margin: 0 0 3px 0;
+  padding: 0px;
+  display: block;
+  font-weight: bold;
 }
+
 .form-style-1 input[type=text],
 .form-style-1 input[type=date],
 .form-style-1 input[type=datetime],
@@ -73,19 +82,20 @@ html{
 .form-style-1 input[type=url],
 .form-style-1 input[type=email],
 textarea,
-select{
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border:1px solid #BEBEBE;
-	padding: 7px;
-	margin:0px;
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
-	-o-transition: all 0.30s ease-in-out;
-	outline: none;
+select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px solid #BEBEBE;
+  padding: 7px;
+  margin: 0px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
 }
+
 .form-style-1 input[type=text]:focus,
 .form-style-1 input[type=date]:focus,
 .form-style-1 input[type=datetime]:focus,
@@ -95,99 +105,107 @@ select{
 .form-style-1 input[type=url]:focus,
 .form-style-1 input[type=email]:focus,
 .form-style-1 textarea:focus,
-.form-style-1 select:focus{
-	-moz-box-shadow: 0 0 8px #88D5E9;
-	-webkit-box-shadow: 0 0 8px #88D5E9;
-	box-shadow: 0 0 8px #88D5E9;
-	border: 1px solid #88D5E9;
-}
-.form-style-1 .field-divided{
-	width: 49%;
+.form-style-1 select:focus {
+  -moz-box-shadow: 0 0 8px #88D5E9;
+  -webkit-box-shadow: 0 0 8px #88D5E9;
+  box-shadow: 0 0 8px #88D5E9;
+  border: 1px solid #88D5E9;
 }
 
-.form-style-1 .field-long{
-	width: 100%;
-}
-.form-style-1 .field-select{
-	width: 100%;
-}
-.form-style-1 .field-textarea{
-	height: 100px;
-}
-.form-style-1 input[type=submit], .form-style-1 input[type=button]{
-	background: #CC0000;
-	padding: 8px 15px 8px 15px;
-	border: none;
-	color: #fff;
-}
-.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-	background: #bf2626;
-	box-shadow:none;
-	-moz-box-shadow:none;
-	-webkit-box-shadow:none;
-}
-.form-style-1 .required{
-	color:red;
+.form-style-1 .field-divided {
+  width: 49%;
 }
 
-h3{
+.form-style-1 .field-long {
+  width: 100%;
+}
+
+.form-style-1 .field-select {
+  width: 100%;
+}
+
+.form-style-1 .field-textarea {
+  height: 100px;
+}
+
+.form-style-1 input[type=submit], .form-style-1 input[type=button] {
+  background: #CC0000;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  color: #fff;
+}
+
+.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover {
+  background: #bf2626;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.form-style-1 .required {
+  color: red;
+}
+
+h3 {
   background-color: #fff;
-  margin:10px auto;
-	max-width: 400px;
-	padding: 10px 12px 10px 20px;
+  margin: 10px auto;
+  max-width: 400px;
+  padding: 10px 12px 10px 20px;
   text-align: center;
 }
 
-.headerlogo{
-height: 40px;
-width: 120px;
+.headerlogo {
+  height: 40px;
+  width: 120px;
 }
 
-.footer{
+.footer {
   overflow: hidden;
   width: 100%;
 }
 
-.copy {color: white;}
+.copy {
+  color: white;
+}
 
 .navigationfoot {
-    list-style: none;
-    margin: 0;
-    background: #CC0000;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  background: #CC0000;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+}
 
-  }
-  .navigationfoot li:first-child{
-    margin-right: auto;
-    padding: 5px;
-  }
+.navigationfoot li:first-child {
+  margin-right: auto;
+  padding: 5px;
+}
 
-  .navigationfoot a {
-    text-decoration: none;
-    display: block;
-    padding: 1px;
-    color: white;
-  }
+.navigationfoot a {
+  text-decoration: none;
+  display: block;
+  padding: 1px;
+  color: white;
+}
 
-  .navigationfoot a:hover {
-    background: grey;
-  }
+.navigationfoot a:hover {
+  background: grey;
+}
+
 .navigationfoot li:last-child {
   padding-top: 9px;
   padding-right: 10px;
-
 }
 
 .submittedform {
   background-color: #fff;
   text-align: center;
-  margin:10px auto;
+  margin: 10px auto;
   max-width: 400px;
   padding: 1px 12px 10px 20px;
   font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
