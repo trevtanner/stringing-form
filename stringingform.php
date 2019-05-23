@@ -7,13 +7,13 @@
 <header class="header">
   <ul class="navigation">
     <li><img src="tamalaxletterlogo.png" class="headerlogo"></li>
-    <li><a  href= "search.html">Searchs</a></li>
+    <li><a  href= "search.html">Search Orders</a></li>
     <li><a  href= "info.html">Info</a></li>
   </ul>
 </header>
-<body>
+<body class = "submittedform">
 <h3 class="header3">Stringing Work Order</h3>
-<<?php
+<?php
 //this if statement checks that the fields are filled
 if (empty($_POST['name']) || empty($_POST['age']) || empty($_POST['years']) || empty($_POST['position']) || empty($_POST['head']) || empty($_POST['mesh']) || empty($_POST['sidewall'])
 || empty($_POST['shooters'])|| empty($_POST['shooterstyle']) || empty($_POST['pklocation']) || empty($_POST['whip']) || empty($_POST['comments'])){
@@ -74,21 +74,19 @@ echo "<p>You must fill out the form.<br>
 
         }
         //this code changes the entered information into a string that can be entered into the table
-        $name = $_POST['name'];
-        $age = $_POST['age'];
-        $years = $_POST['years'];
-        $position = $_POST['position'];
-        $head = $_POST['head'];
-        $mesh = $_POST['mesh'];
-        $sidewall = $_POST['sidewall'];
-        $shooters = $_POST['shooters'];
-        $shooterstyle = $_POST['shooterstyle'];
-        $pklocation = $_POST['pklocation'];
-        $whip = $_POST['whip'];
-        $addlcomms = $_POST['comments'];
+        $name = stripslashes($_POST['name']);
+        $age = stripslashes($_POST['age']);
+        $years = stripslashes($_POST['years']);
+        $position = stripslashes($_POST['position']);
+        $head = stripslashes($_POST['head']);
+        $mesh = stripslashes($_POST['mesh']);
+        $sidewall = stripslashes($_POST['sidewall']);
+        $shooters = stripslashes($_POST['shooters']);
+        $shooterstyle = stripslashes($_POST['shooterstyle']);
+        $pklocation = stripslashes($_POST['pklocation']);
+        $whip = stripslashes($_POST['whip']);
+        $addlcomms = stripslashes($_POST['comments']);
 
-        /*$LastName = stripslashes($_POST['last_name']);
-        $FirstName = stripslashes($_POST['first_name']);*/
         $SQLstring = "INSERT INTO $TableName VALUES (NULL, '$name', '$age', '$years', '$position', '$head', '$mesh', '$sidewall', '$shooters', '$shooterstyle', '$pklocation', '$whip', '$addlcomms')";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         //this if statement checks that the information was added to the table and returns an error code if not
@@ -102,6 +100,7 @@ echo "<p>You must fill out the form.<br>
     }
 }
 ?>
+
 </body>
 <footer class="footer">
   <ul class="navigationfoot">

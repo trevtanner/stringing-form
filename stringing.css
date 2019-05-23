@@ -183,3 +183,12 @@ width: 120px;
   padding-right: 10px;
 
 }
+
+.submittedform {
+  background-color: #fff;
+  text-align: center;
+  margin:10px auto;
+  max-width: 400px;
+  padding: 1px 12px 10px 20px;
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
