@@ -1,4 +1,5 @@
-## Lacrosse Stringing Form
+# Lacrosse Stringing Form
+## About
 This project is a form that takes the place of a written stringing form, and
 saving the information into a mySQL database. Uses html, css, and php to make
 and submit the form. This program is created specifically for Tama Lacrosse,
