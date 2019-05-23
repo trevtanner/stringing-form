@@ -41,18 +41,31 @@ echo "<p>You must fill out the form.<br>
            echo "<p>Unable to execute the query.</p>" . "<p>Error code " . mysqli_errno() . ": " . mysqli_error() . "</p>";
            //once the database is created it returns this text to let the user know they are the first visitor
          } else {
-           echo "<p>You are the first vistor!</p>";
+           echo "<p>This is the first order!</p>";
          }
        }
        mysqli_select_db($DBConnect, $DBName);
 
        //this code connect to the table "visitors" within the "guestbook" database
-       $TableName = "visitors";
+       $TableName = "orders";
        $SQLstring = "SHOW TABLES LIKE '$TableName'";
        $QueryResult = mysqil_query($DBConnect, $SQLstring);
        //this if statement checks for the table and creates it if it is not present
        if (mysqli_num_rows($QueryResult) == 0) {
-         $SQLstring = "CREATE TABLE $TableName (countID SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY, last_name VARCHAR (40), first_name VARCHAR(40))";
+         $SQLstring = "CREATE TABLE $TableName (
+         orderid int not null auto_increment primary key,
+         name char(50) not null,
+         age int not null,
+         pyears int not null,
+         position char(50) not null,
+         head char(50) not null,
+         mesh char(50) not null,
+         sidewall char(50) not null,
+         shooters char(50) not null,
+         shooterstyle char(50) not null,
+         pklocation char(50) not null,
+         whip char(50) not null,
+         addlcomms char(200) not null)";
          $QueryResult = mysqli_query($DBConnect, $SQLstring);
          //this if statement returns the error code if the table could not be created
          if ($QueryResult === FLASE) {
@@ -76,71 +89,22 @@ echo "<p>You must fill out the form.<br>
 
        /*$LastName = stripslashes($_POST['last_name']);
        $FirstName = stripslashes($_POST['first_name']);*/
-       $SQLstring = "INSERT INTO $TableName VALUES (NULL, '$LastName', '$FirstName')";
+       $SQLstring = "INSERT INTO $TableName VALUES (NULL, '$name', '$age', '$years', '$position', '$head', '$mesh', '$sidewall', '$shooters', '$shooterstyle', '$pklocation', '$whip', '$addlcomms')";
        $QueryResult = mysqli_query($DBConnect, $SQLstring);
        //this if statement checks that the information was added to the table and returns an error code if not
        if ($QueryResult === FALSE) {
          echo "<p>Unable to execute the query.</p>" . "<p>Error code " . mysqli_errno($DBConnect) . ": " . mysqli_error($DBConnect) . "</p>";
        } else {
-         echo "<h1>Thank you for sigining our guest book!</h1>";
+         echo "<h1>Order has been recieved!</h1>";
        }
        //closes the connection the the database
        mysqli_close($DBConnect);
-    }
-}
-/*database name: stringing || table name: orders */
-$name = $_POST['name'];
-$age = $_POST['age'];
-$years = $_POST['years'];
-$position = $_POST['position'];
-$head = $_POST['head'];
-$mesh = $_POST['mesh'];
-$sidewall = $_POST['sidewall'];
-$shooters = $_POST['shooters'];
-$shooterstyle = $_POST['shooterstyle'];
-$pklocation = $_POST['pklocation'];
-$whip = $_POST['whip'];
-$addlcomms = $_POST['comments'];
-
-if (!$name ||!$age ||!$years ||!$position ||!$head ||!$mesh ||!$sidewall ||!$shooters ||!$shooterstyle ||!$pklocation ||!$whip ||!$addlcomms ){
-  echo "You have not entered all required information.<br>Please go back and try again.";
-  exit;
-}
-
-if (!get_magic_quotes_gpc()) {
-  $name = addslashes($name);
-  $age  = doubleval($age);
-  $years  = doubleval($years);
-  $position  = addslashes($position);
-  $head  = addslashes($head);
-  $mesh  = addslashes($mesh);
-  $sidewall  = addslashes($sidewall);
-  $shooters  = addslashes($shooters);
-  $shooterstyle  = addslashes($shooterstyle);
-  $pklocation  = addslashes($pklocation);
-  $whip  = addslashes($whip);
-  $addlcomms  = addslashes($addlcomms);
-}
-
-$conn = OpenCon();
-
-$query = "insert into 'orders' values
-          (NULL, '".$name."', '".$age."', '".$years."', '".$position."', '".$head."', '".$mesh."', '".$sidewall."', '".$shooters."', '".$shooterstyle."', '".$pklocation."', '".$whip."', '".$addlcomms."')";
-$result = $conn->query($query);
-
-if ($result) {
-  echo $conn->affected_rows."Order input Successful.";
-} else {
-      echo "An error has occured. The order was not recieved.";
-};
-
-$conn->close();
- ?>
+?>
 </body>
 <footer class="footer">
-    <ul class="navigationfoot">
-        <li><p class="copy">Copyright &copy; 2019 Tama Lacrosse</p></li>
-        <li><a  href= "https://www.tamalax.com"><img src="tamalaxlogo.png" alt="Tama Logo" width="40" height="40"></a></li>
-    </ul>
+  <ul class="navigationfoot">
+    <li><p class="copy">Copyright &copy; 2019 Tama Lacrosse</p></li>
+    <li><a  href= "https://www.tamalax.com"><img src="tamalaxlogo.png" alt="Tama Logo" width="40" height="40"></a></li>
+  </ul>
 </footer>
 </html>
