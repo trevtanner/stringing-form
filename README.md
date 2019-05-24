@@ -36,4 +36,4 @@ All code written by Trevor Tanner using atom text-editor, XAMPP, and JetBrains P
 
 ##### Email me @ trevtanner@gmail.com if you have any other questions
 
-© Trevor Tanner
+MIT © Trevor Tanner
