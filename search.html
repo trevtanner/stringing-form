@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 
 <head>
-  <!--<link rel="stylesheet" href="stringing.css">-->
+  <link rel="stylesheet" href="stringing.css">
   <title>Order Search</title>
 </head>
 <header class="header">
@@ -17,11 +17,17 @@
 
 <body>
   <h3 class="header3">Order Search</h3>
-  <form action="results.php" method="post">
-    Enter Order Number or Name on order:<br />
-    <input name="searchterm" type=”"text" size="40" />
-    <br />
-    <input type="submit" name="submit" value="Search" />
+  <form action="results.php" method="post" class="form-style-1">
+<ul class="form-style-1">
+    <li><select name="searchtype">
+      <option value="name">Name</option>
+      <option value="orderid">OrderID</option>
+    </select></li>
+      <br/><br/>
+    <li><label>Name or Order ID number:</label>
+      <input name="searchterm" type="text" class="field-long" /></li><br />
+    <li><input type="submit" name="submit" value="Search" /></li>
+  </ul>
   </form>
 </body>
 <footer class="footer">

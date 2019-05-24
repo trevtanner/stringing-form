@@ -3,8 +3,8 @@
 <html lang="en">
     <meta charset="UTF-8">
 <head>
-	<!--<link rel="stylesheet" href="stringing.css">-->
-<title>Stringing Work Order</title>
+	<link rel="stylesheet" href="stringing.css">
+<title>Search Results</title>
 </head>
 <header class="header">
   <ul class="navigation">
@@ -14,74 +14,88 @@
   </ul>
 </header>
 <body>
-<h3 class= "header3" >Stringing Work Order</h3>
+<h3 class= "header3" >Search Results</h3>
 <?php
 $user = "root";
 $password = "";
 $host = "localhost";
+$db = "stringing";
 //checks the connection to the database
-$DBConnect = mysqli_connect($host, $user, $password);
-if ($DBConnect === FALSE){
-   echo "<p>Unable to connect to the database server.</p>" . "<p>Error code " . mysqli_errno() . ": " . mysqli_error() . "</p>";
-   //opnes the guestbook database
-}else{
-  $DBName = "stringing";
-  //returns if there is not database
-  if (!mysqli_select_db($DBConnect, $DBName)){
+$mysqli = new mysqli($host, $user, $password, $db);
+  //returns if there is not yourDatabase
+  if (mysqli_connect_errno()) {
     echo "<p>There are no orders enterd</p>";
-    //connects to the table "visitors" and selects all information from it
-  } else {
+    exit();
+    /*use if statements from form options to decide to search ids or names
+      if ($searchtype == 'name') {
+      name
+    }rlse{
+    orderid
+  }
+    */
 
-        $TableName = "orders";
-        $SQLstring = "SELECT * FROM $TableName";
-        $QueryResult = mysqli_query($SQLstring);
+  }
         $searchterm=stripcslashes($_POST['searchterm']);
-
-          if (!$searchterm) {
+        $searchtype=($_POST['searchtype']);
+          if (empty($searchterm)) {
           echo 'You have not entered search details.';
         }else{
+          if ($searchtype ='name') {
+            $table = "orders";
+            $query = "SELECT * FROM $table
+            WHERE name='$searchterm'";
+            $result = $mysqli->query($query);
+            while ($row = $result->fetch_assoc()) {
 
+      echo "<p class='form-style-1'>";
+      echo "<br />Name: ".$row['name'];
+      echo "<br />Age: ".$row['age'];
+      echo "<br />Years Playing: ".$row['pyears'];
+      echo "<br />Position: ".$row['position'];
+      echo "<br />Head: ".$row['head'];
+      echo "<br />Mesh: ".$row['mesh'];
+      echo "<br />Sidewall: ".$row['sidewall'];
+      echo "<br />Shooters: ".$row['shooters'];
+      echo "<br />Shooter Style: ".$row['shooterstyle'];
+      echo "<br />Pocket Location: ".$row['pklocation'];
+      echo "<br />Whip: ".$row['whip'];
+      echo "<br />Additonal Comments: ".$row['addlcomms'];
+      echo "</p>";
+
+              }
+        }else{
+          $table = "orders";
+          $query = "SELECT * FROM $table
+          WHERE orderid='$searchterm'";
+          $result = $mysqli->query($query);
+          while ($row = $result->fetch_assoc()) {
+
+    echo "<p class='form-style-1'>";
+    echo "</strong><br />Name: ".$row['name'];
+    echo "<br />Age: ".$row['age'];
+    echo "<br />Years Playing: ".$row['pyears'];
+    echo "<br />Position: ".$row['position'];
+    echo "<br />Head: ".$row['head'];
+    echo "<br />Mesh: ".$row['mesh'];
+    echo "<br />Sidewall: ".$row['sidewall'];
+    echo "<br />Shooters: ".$row['shooters'];
+    echo "<br />Shooter Style: ".$row['shooterstyle'];
+    echo "<br />Pocket Location: ".$row['pklocation'];
+    echo "<br />Whip: ".$row['whip'];
+    echo "<br />Additonal Comments: ".$row['addlcomms'];
+    echo "</p>";
+
+            }
+      }
           //$sql="SELECT  ID, FirstName, LastName FROM Contacts WHERE FirstName LIKE '%" . $name .  "%' OR LastName LIKE '%" . $name ."%'";
-          $query = "select * from orders where name like '%" . $searchterm . "%' OR orderid LIKE '%" . $searchterm . "%'";
-          $result =mysqli_query($query);
-          $num_results = $result-> num_rows;
-          echo "<p>Number of orders found: " . $num_results . "</p>";
-          while ($row = mysqli_fetch_array($results)) {
 
-          //Change these to call all parts of the order from the orders table in the stringing database
-          echo "</strong><br />Name: ";
-          echo stripslashes($row['name']);
-          echo "<br />Age: ";
-          echo stripslashes($row['age']);
-          echo "<br />Years Playing: ";
-          echo stripslashes($row['pyears']);
-          echo "<br />Position: ";
-          echo stripslashes($row['position']);
-          echo "<br />Head: ";
-          echo stripslashes($row['head']);
-          echo "<br />Mesh: ";
-          echo stripslashes($row['mesh']);
-          echo "<br />Sidewall: ";
-          echo stripslashes($row['sidewall']);
-          echo "<br />Shooters: ";
-          echo stripslashes($row['shooters']);
-          echo "<br />Shooter Style: ";
-          echo stripslashes($row['shooterstyle']);
-          echo "<br />Pocket Location: ";
-          echo stripslashes($row['$pklocation']);
-          echo "<br />Whip: ";
-          echo stripslashes($row['whip']);
-          echo "<br />Additonal Comments: ";
-          echo stripslashes($row['addlcomms']);
-          echo "</p>";
-          }
+
+            /* free result set */
+            $result->close();
         }
-        //closes the query results
-        mysqli_free_result($query);
-  }
-  //closes connection to database
-  mysqli_close($DBConnect);
-}
+
+        /* close connection */
+        $mysqli->close();
 /*
 <?php
 if(isset($_POST['submit'])){
