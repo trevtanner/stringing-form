@@ -3,6 +3,9 @@
 <html lang="en">
     <meta charset="UTF-8">
 <head>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="stringing.css">
 <title>Search Results</title>
 </head>
@@ -10,6 +13,7 @@
   <ul class="navigation">
     <li><img src="tamalaxletterlogo.png" class="headerlogo"></li>
     <li><a  href= "stringingsite.html">Stringing Form</a></li>
+    <li><a  href= "search.html">Search Orders</a></li>
     <li><a  href= "info.html">Info</a></li>
   </ul>
 </header>
@@ -35,12 +39,12 @@ $mysqli = new mysqli($host, $user, $password, $db);
     */
 
   }
-        $searchterm=stripcslashes($_POST['searchterm']);
+        $searchterm=stripslashes($_POST['searchterm']);
         $searchtype=($_POST['searchtype']);
           if (empty($searchterm)) {
-          echo 'You have not entered search details.';
+          echo "<p class='form-style-1'>You have not entered any search details.</p>";
         }else{
-          if ($searchtype ='name') {
+          if ($searchtype ==="name") {
             $table = "orders";
             $query = "SELECT * FROM $table
             WHERE name='$searchterm'";
@@ -48,42 +52,46 @@ $mysqli = new mysqli($host, $user, $password, $db);
             while ($row = $result->fetch_assoc()) {
 
       echo "<p class='form-style-1'>";
-      echo "<br />Name: ".$row['name'];
-      echo "<br />Age: ".$row['age'];
-      echo "<br />Years Playing: ".$row['pyears'];
-      echo "<br />Position: ".$row['position'];
-      echo "<br />Head: ".$row['head'];
-      echo "<br />Mesh: ".$row['mesh'];
-      echo "<br />Sidewall: ".$row['sidewall'];
-      echo "<br />Shooters: ".$row['shooters'];
-      echo "<br />Shooter Style: ".$row['shooterstyle'];
-      echo "<br />Pocket Location: ".$row['pklocation'];
-      echo "<br />Whip: ".$row['whip'];
-      echo "<br />Additonal Comments: ".$row['addlcomms'];
+      echo "<ul class='form-style-1'>";
+      echo "<br /><li><label>Name: </label>".$row['name']."</li>";
+      echo "<br /><li><label>Age: </label> ".$row['age']."</li>";
+      echo "<br /><li><label>Years Playing: </label> ".$row['pyears']."</li>";
+      echo "<br /><li><label>Position: </label> ".$row['position']."</li>";
+      echo "<br /><li><label>Head: </label> ".$row['head']."</li>";
+      echo "<br /><li><label>Mesh: </label> ".$row['mesh']."</li>";
+      echo "<br /><li><label>Sidewall: </label> ".$row['sidewall']."</li>";
+      echo "<br /><li><label>Shooters: </label> ".$row['shooters']."</li>";
+      echo "<br /><li><label>Shooter Style: </label> ".$row['shooterstyle']."</li>";
+      echo "<br /><li><label>Pocket Location: </label> ".$row['pklocation']."</li>";
+      echo "<br /><li><label>Whip: </label> ".$row['whip']."</li>";
+      echo "<br /><li><label>Additonal Comments: </label> ".$row['addlcomms']."</li><br>";
+      echo "</ul>";
       echo "</p>";
 
               }
-        }else{
+        }elseif($searchtype ==="orderid"){
           $table = "orders";
           $query = "SELECT * FROM $table
           WHERE orderid='$searchterm'";
           $result = $mysqli->query($query);
           while ($row = $result->fetch_assoc()) {
 
-    echo "<p class='form-style-1'>";
-    echo "</strong><br />Name: ".$row['name'];
-    echo "<br />Age: ".$row['age'];
-    echo "<br />Years Playing: ".$row['pyears'];
-    echo "<br />Position: ".$row['position'];
-    echo "<br />Head: ".$row['head'];
-    echo "<br />Mesh: ".$row['mesh'];
-    echo "<br />Sidewall: ".$row['sidewall'];
-    echo "<br />Shooters: ".$row['shooters'];
-    echo "<br />Shooter Style: ".$row['shooterstyle'];
-    echo "<br />Pocket Location: ".$row['pklocation'];
-    echo "<br />Whip: ".$row['whip'];
-    echo "<br />Additonal Comments: ".$row['addlcomms'];
-    echo "</p>";
+            echo "<p class='form-style-1'>";
+            echo "<ul class='form-style-1'>";
+            echo "<br /><li>Name: ".$row['name']."</li>";
+            echo "<br /><li>Age: ".$row['age']."</li>";
+            echo "<br /><li>Years Playing: ".$row['pyears']."</li>";
+            echo "<br /><li>Position: ".$row['position']."</li>";
+            echo "<br /><li>Head: ".$row['head']."</li>";
+            echo "<br /><li>Mesh: ".$row['mesh']."</li>";
+            echo "<br /><li>Sidewall: ".$row['sidewall']."</li>";
+            echo "<br /><li>Shooters: ".$row['shooters']."</li>";
+            echo "<br /><li>Shooter Style: ".$row['shooterstyle']."</li>";
+            echo "<br /><li>Pocket Location: ".$row['pklocation']."</li>";
+            echo "<br /><li>Whip: ".$row['whip']."</li>";
+            echo "<br /><li>Additonal Comments: ".$row['addlcomms']."</li><br>";
+            echo "</ul>";
+            echo "</p>";
 
             }
       }
@@ -93,7 +101,6 @@ $mysqli = new mysqli($host, $user, $password, $db);
             /* free result set */
             $result->close();
         }
-
         /* close connection */
         $mysqli->close();
 /*

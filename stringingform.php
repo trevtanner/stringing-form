@@ -1,12 +1,15 @@
-
+<!DOCTYPE html>
 <html>
 <head>
+	  <meta charset="UTF-8">
+	  <meta name="description" content="">
 	<link rel="stylesheet" href="stringing.css">
 <title>Stringing Work Order</title>
 </head>
 <header class="header">
   <ul class="navigation">
     <li><img src="tamalaxletterlogo.png" class="headerlogo"></li>
+		<li><a  href="stringingsite.html">Stringing Form</a></li>
     <li><a  href= "search.html">Search Orders</a></li>
     <li><a  href= "info.html">Info</a></li>
   </ul>
@@ -23,7 +26,7 @@ echo "<p>You must fill out the form.<br>
 }else {
     $user = "root";
     $password = "";
-    $host = "localhost";
+    $host = "127.0.0.1";
 
     $DBConnect = mysqli_connect($host, $user, $password);
     //this if statement checks the connection the the database and returns the error if not

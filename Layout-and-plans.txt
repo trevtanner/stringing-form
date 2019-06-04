@@ -1,4 +1,5 @@
 Stringing Website:
+******ADD ERROR HANDLE FOR SEARCH PAGE WHEN A TERM IS ENTERED BUT IS NOT FOUND IN THE TABLE******
 *Use php to create a login for employee
 *Original use will be for in store only, employees log in and save to store server
 	*In future allow seperate logins for Employees and customers
@@ -22,7 +23,7 @@ Stringing Website:
 *Form should enter info into an master array for the store the order was from, with a secondary array for the
  customers form info
 
-*Once form is submitted and all info is confirmed correct by system, display page with order conformation 
+*Once form is submitted and all info is confirmed correct by system, display page with order conformation
  number (this number should allow store to look up order in array) and completion date
 
 *Store should print this page for customers records, eventually add option to email customers recepit
@@ -33,4 +34,4 @@ Functionality to add later:
 *Links to picutures of previously done orders/customer testimonials
 *Add ability for customer to attach a picture of a strung head that they would like theirs done like
 *Option for employee to select customer provided materials for all options if customer brings in their own Mesh/stringing/etc
-*Add option for Goalie sticks/ girls sticks	
+*Add option for Goalie sticks/ girls sticks
