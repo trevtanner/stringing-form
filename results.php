@@ -12,7 +12,7 @@
 <header class="header">
   <ul class="navigation">
     <li><img src="tamalaxletterlogo.png" class="headerlogo"></li>
-    <li><a  href= "stringingsite.html">Stringing Form</a></li>
+    <li><a  href= "index.html">Stringing Form</a></li>
     <li><a  href= "search.html">Search Orders</a></li>
     <li><a  href= "info.html">Info</a></li>
   </ul>
